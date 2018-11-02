@@ -30,7 +30,7 @@
 			<tr>
 				<td colspan="2">
 					<input type="checkbox" name="remname" checked/>记住用户名
-					<input type="checkbox" name="autologin" checked/>30天内自动登陆
+					<input type="checkbox" name="autologin" />30天内自动登陆
 				</td>
 			</tr>
 			<tr>

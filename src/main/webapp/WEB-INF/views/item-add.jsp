@@ -6,7 +6,7 @@
 	<form id="itemAddForm" class="itemForm" method="post">
 	    <table cellpadding="5">
 	        <tr>
-	            <td>商品类目:</td>
+	            <td>商品分类:</td>
 	            <td>
 	            	<input type="text" name="productCategory" style="width: 280px;"></input>
 	            </td>
@@ -17,7 +17,7 @@
 	        </tr>
 	        <tr>
 	            <td>商品价格:</td>
-	            <td><input class="easyui-numberbox" type="text" name="productPrice" style="width: 280px;"></input>
+	            <td><input class="easyui-numberbox" type="text" name="productPrice" data-options="min:1,max:99999999,precision:2,required:true" />
 	            </td>
 	        </tr>
 	        <tr>
@@ -34,12 +34,10 @@
 	        <tr>
 	            <td>商品描述:</td>
 	            <td>
-	                <textarea style="width:800px;height:300px;" name="productDescription"></textarea>
+	                <textarea style="width:800px;height:300px;visibility:hidden;" name="productDescription"></textarea>
 	            </td>
 	        </tr>
-	        
 	    </table>
-	    <input type="hidden" name="itemParams"/>
 	</form>
 	<div style="padding:5px">
 	    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">提交</a>
@@ -50,7 +48,8 @@
 	var itemAddEditor ;
 	$(function(){
 		//和form下的desc组件绑定
-		itemAddEditor = KindEditorUtil.create("#itemAddForm [name=productDescription]");
+		
+		itemAddEditor = KindEditorUtil.createEditor("#itemAddForm [name=productDescription]");
 		KindEditorUtil.init({fun:function(node){
 			KindEditorUtil.changeItemParam(node, "itemAddForm");
 		}});
@@ -62,12 +61,14 @@
 			$.messager.alert('提示','表单还未填写完成!');
 			return ;
 		}
+		//转化价格单位，将元转化为分
+		$("#itemAddForm [name=price]").val(eval($("#itemAddForm [name=priceView]").val()) * 100);
+		itemAddEditor.sync();//将输入的内容同步到多行文本中
+		
 		alert($("#itemAddForm").serialize());
 		$.post("/product/save",$("#itemAddForm").serialize(), function(data){
 			if(data.status == 200){
-				$.messager.alert('提示',data.msg);
-			}else{
-				$.messager.alert('提示',data.msg);
+				$.messager.alert('提示','新增商品成功!');
 			}
 		});
 	}

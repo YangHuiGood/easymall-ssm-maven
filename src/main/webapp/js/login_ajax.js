@@ -38,7 +38,7 @@ function login(){
 	$.ajax({
 		url:"/user_ajax/login",
 		type:"get",
-		data:{"userName":userName,"password":userPassword},
+		data:{"userName":userName,"userPassword":userPassword},
 		dataType:"json",
 		success:function(result){
 			//result是服务端返回的数据
@@ -62,7 +62,7 @@ function login(){
 					delCookie("loginName");
 				}
 			}else if(result.status==0){
-				alert(result.message);
+				alert(result.msg);
 			}
 		},
 		error:function(){

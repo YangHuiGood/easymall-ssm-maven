@@ -5,9 +5,9 @@
 <div style="padding:10px 10px 10px 10px">
 	<form id="itemeEditForm" class="itemForm" method="post">
 		<input type="hidden" name="productId"/>
-	    <table cellpadding="5">
+	     <table cellpadding="5">
 	        <tr>
-	            <td>商品类目:</td>
+	            <td>商品分类:</td>
 	            <td>
 	            	<input type="text" name="productCategory" style="width: 280px;"></input>
 	            </td>
@@ -18,7 +18,7 @@
 	        </tr>
 	        <tr>
 	            <td>商品价格:</td>
-	            <td><input class="easyui-numberbox" type="text" name="productPrice" style="width: 280px;"></input>
+	            <td><input class="easyui-numberbox" type="text" name="productPrice" data-options="min:1,max:99999999,precision:2,required:true" />
 	            </td>
 	        </tr>
 	        <tr>
@@ -35,12 +35,10 @@
 	        <tr>
 	            <td>商品描述:</td>
 	            <td>
-	                <textarea style="width:800px;height:300px;" name="productDescription"></textarea>
+	                <textarea id="productDesc" style="width:800px;height:300px;visibility:hidden;" name="productDescription"></textarea>
 	            </td>
 	        </tr>
 	    </table>
-	    <input type="hidden" name="itemParams"/>
-	    <input type="hidden" name="itemParamId"/>
 	</form>
 	<div style="padding:5px">
 	    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">提交</a>
@@ -50,7 +48,7 @@
 	var itemEditEditor ;
 	$(function(){
 		//实例化编辑器
-		itemEditEditor = KindEditorUtil.createEditor("#itemeEditForm [name=desc]");
+		itemEditEditor = KindEditorUtil.createEditor("#itemeEditForm [name=productDescription]");
 	});
 	
 	function submitForm(){

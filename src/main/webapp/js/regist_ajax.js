@@ -27,9 +27,9 @@ $(function() {
 						}
 					});*/
 					$.ajax({
-						url:"user_ajax/checkUserName",
+						url:"/user_ajax/checkUserName",
 						type:"post",
-						data:{"username":userName},
+						data:{"userName":userName},
 						dataType:"json",
 						success:function(result){
 							if (result.status==1) {
@@ -59,21 +59,21 @@ function register(){
 	var flag=formObj.checkForm();
 	if(flag){
 		$.ajax({
-			url:"user_ajax/regist",
+			url:"/user_ajax/regist",
 			type:"post",
 			data:{
 				  "userName":userName,
-				  "password":userPassword,
-				  "nickName":userNickName,
-				  "email":userEmail,
+				  "userPassword":userPassword,
+				  "userNickname":userNickName,
+				  "userEmail":userEmail,
 				 },
 			dataType:"json",
 			success:function(result){
 				if(result.status==1){
-					alert(result.message);
-					window.location.href="login_ajax.jsp";
+					alert(result.msg);
+					window.location.href="/page/login";
 				}else if(result.status==0){
-					alert(result.message);
+					alert(result.msg);
 				}
 			},
 			error:function(){

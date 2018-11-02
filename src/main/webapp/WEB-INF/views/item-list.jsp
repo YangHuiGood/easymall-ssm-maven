@@ -7,7 +7,7 @@
         	<th data-options="field:'productId',width:60">商品ID</th>
             <th data-options="field:'productName',width:200">商品名称</th>
             <th data-options="field:'productCategory',width:100">商品类目</th>
-            <th data-options="field:'productPrice',width:70,align:'right',formatter:KindEditorUtil.formatPrice">商品价格</th>
+            <th data-options="field:'productPrice',width:70,align:'right'">商品价格</th>
             <th data-options="field:'productDescription',width:100">商品描述</th>
          </tr>
     </thead>
@@ -53,9 +53,9 @@
         			var data = $("#itemList").datagrid("getSelections")[0];
         			data.priceView = KindEditorUtil.formatPrice(data.price);
         			$("#itemeEditForm").form("load",data);
-        			
+        			itemEditEditor.html(data.productDescription);
         			// 加载商品描述
-        			$.getJSON('/item/query/item/desc/'+data.id,function(_data){
+$.getJSON('/item/query/item/desc/'+data.id,function(_data){
         				if(_data.status == 200){
         					//UM.getEditor('itemeEditDescEditor').setContent(_data.data.itemDesc, false);
         					itemEditEditor.html(_data.data.itemDesc);

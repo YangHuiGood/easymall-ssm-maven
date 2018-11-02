@@ -1,5 +1,6 @@
 package com.jt.easymall.manage.controller;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,10 +75,15 @@ public class ProductManageController {
 	@RequestMapping("/product/delete")
 	@ResponseBody
 	public SysResult deleteProduct(@RequestParam("ids")String ids ){
+		String[] arrayId = ids.split(",");
+		int success = 0;
+		for(String id :arrayId){
+			//调用service删除方法
+		    success = productService.deleteProduct(id);
+		    success++;
+		}
 		SysResult result = new SysResult();
-		//调用service删除方法
-		int success = productService.deleteProduct(ids);
-		if(success == 1){//修改成功
+		if(success == arrayId.length){//修改成功
 			result.setStatus(200);
 			result.setMsg("删除成功");
 			return result;

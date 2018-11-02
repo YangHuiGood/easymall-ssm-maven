@@ -72,10 +72,10 @@
 <%@include file="/head.jsp" %>
 	<div class="warp">
 	${msg }
-		<!-- 标题信息 -->
+		<!-- 标题信息 --> 
 		<div id="title">
 			<input name="allC" type="checkbox" value="" onclick=""/>
-			<span id="title_checkall_text">全选</span>
+			 <span id="title_checkall_text">全选</span>
 			<span id="title_name">商品</span>
 			<span id="title_price">单价（元）</span>
 			<span id="title_buynum">数量</span>
@@ -86,9 +86,8 @@
 	<c:set var="money" value="0"/>
 	<c:forEach items="${cartList}" var="cartItem">
 		<div id="prods">
-			<input name="prodC" type="checkbox" value=""/>
-			<img src="${app }/${cartItem.productImage}" width="90" height="90" />
-			<span id="prods_name">${cartItem.productName}</span>
+		    <input name="prodC" type="checkbox" value=""/>
+			<span id="prods_name"><img src="${app }${cartItem.productImage}" width="90" height="90" />&nbsp&nbsp&nbsp${cartItem.productName}</span>
 			<span id="prods_price">${cartItem.productPrice}</span>
 			<span id="prods_buynum"> 
 				<input type="hidden" id="hid_${cartItem.productId}" value="${cartItem.num }"/>

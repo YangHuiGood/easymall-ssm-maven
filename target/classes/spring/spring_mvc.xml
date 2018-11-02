@@ -46,4 +46,12 @@
 		<property name="maxUploadSize" value="8388608"></property>
 		<property name="resolveLazily" value="true"></property>
 	</bean>
+	<!-- 配置拦截器 -->
+	<mvc:interceptors>
+	  <mvc:interceptor>
+	  <!-- mapping中的path属性就是当前拦截的拦截规则 -->
+	    <mvc:mapping path="/cart/**"/>
+	    <bean class="com.jt.easymall.interceptors.UserLoginInterceptor"></bean>
+	  </mvc:interceptor>
+	</mvc:interceptors>
 </beans>

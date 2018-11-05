@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.jt.easymall.mapper.ProductMapper;
 import com.jt.easymall.pojo.Product;
@@ -29,6 +30,7 @@ public class ProductService{
 		Product product = productMapper.findProductById(id);
 		return product;
 	}
+	@Transactional
 	public int saveProduct(Product product) {
 		//缺少id,使用uuid工具类
 		String id = UUIDUtil.getUUID();

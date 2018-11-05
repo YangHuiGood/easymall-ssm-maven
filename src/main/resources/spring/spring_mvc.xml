@@ -54,4 +54,12 @@
 	    <bean class="com.jt.easymall.interceptors.UserLoginInterceptor"></bean>
 	  </mvc:interceptor>
 	</mvc:interceptors>
+	<!-- 配置拦截器 -->
+	<mvc:interceptors>
+	  <mvc:interceptor>
+	  <!-- mapping中的path属性就是当前拦截的拦截规则 -->
+	    <mvc:mapping path="/order/**"/>
+	    <bean class="com.jt.easymall.interceptors.OrderInterceptor"></bean>
+	  </mvc:interceptor>
+	</mvc:interceptors>
 </beans>

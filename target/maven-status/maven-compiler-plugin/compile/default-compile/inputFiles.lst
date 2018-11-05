@@ -1,5 +1,6 @@
 E:\jt\easymall-ssm\src\main\java\com\jt\easymall\controller\IndexController.java
 E:\jt\easymall-ssm\src\main\java\com\jt\easymall\util\UUIDUtil.java
+E:\jt\easymall-ssm\src\main\java\com\jt\easymall\pojo\Order.java
 E:\jt\easymall-ssm\src\main\java\com\jt\easymall\manage\controller\ProductManageController.java
 E:\jt\easymall-ssm\src\main\java\com\jt\easymall\service\UserService.java
 E:\jt\easymall-ssm\src\main\java\com\jt\easymall\vo\Result.java
@@ -7,13 +8,18 @@ E:\jt\easymall-ssm\src\main\java\com\jt\easymall\controller\CartController.java
 E:\jt\easymall-ssm\src\main\java\com\jt\easymall\controller\ProductController.java
 E:\jt\easymall-ssm\src\main\java\com\jt\easymall\controller\PicController.java
 E:\jt\easymall-ssm\src\main\java\com\jt\easymall\controller\UserController.java
+E:\jt\easymall-ssm\src\main\java\com\jt\easymall\job\OrderOTJob.java
 E:\jt\easymall-ssm\src\main\java\com\jt\easymall\vo\PicUploadResult.java
+E:\jt\easymall-ssm\src\main\java\com\jt\easymall\pojo\OrderItem.java
 E:\jt\easymall-ssm\src\main\java\com\jt\easymall\util\UploadUtil.java
+E:\jt\easymall-ssm\src\main\java\com\jt\easymall\controller\OrderController.java
 E:\jt\easymall-ssm\src\main\java\com\jt\easymall\pojo\Product.java
+E:\jt\easymall-ssm\src\main\java\com\jt\easymall\interceptors\OrderInterceptor.java
 E:\jt\easymall-ssm\src\main\java\com\jt\easymall\mapper\UserMapper.java
 E:\jt\easymall-ssm\src\main\java\com\jt\easymall\service\ProductService.java
 E:\jt\easymall-ssm\src\main\java\com\jt\easymall\interceptors\UserLoginInterceptor.java
 E:\jt\easymall-ssm\src\main\java\com\jt\easymall\vo\SysResult.java
+E:\jt\easymall-ssm\src\main\java\com\jt\easymall\service\OrderService.java
 E:\jt\easymall-ssm\src\main\java\com\jt\easymall\vo\Page.java
 E:\jt\easymall-ssm\src\main\java\com\jt\easymall\mapper\CartMapper.java
 E:\jt\easymall-ssm\src\main\java\com\jt\easymall\util\MD5Util.java
@@ -23,3 +29,4 @@ E:\jt\easymall-ssm\src\main\java\com\jt\easymall\vo\EasyUIResult.java
 E:\jt\easymall-ssm\src\main\java\com\jt\easymall\mapper\ProductMapper.java
 E:\jt\easymall-ssm\src\main\java\com\jt\easymall\pojo\Cart.java
 E:\jt\easymall-ssm\src\main\java\com\jt\easymall\service\PicService.java
+E:\jt\easymall-ssm\src\main\java\com\jt\easymall\mapper\OrderMapper.java

@@ -89,4 +89,13 @@
         p:basePackage="com.jt.easymall.mapper"
 		p:sqlSessionFactoryBeanName="sqlSessionFactory">
     </bean>
+    
+    <!-- 定义事务管理器 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="alibabaDataSource" />
+	</bean>
+
+	<!-- 定义事务策略 -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
 </beans>

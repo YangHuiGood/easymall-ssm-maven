@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop 
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx 
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/util 
+        http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+	<!-- 数据库连接池 commons-dbcp ,c3p0,proxool,阿里巴巴druid -->
+	<bean id="alibabaDataSource"
+	      class="com.alibaba.druid.pool.DruidDataSource"
+	      init-method="init"
+	      destroy-method="close">
+	    <!-- 数据库连接的4项 -->
+		<property name="driverClassName">
+			<value>${jdbc_driverClass}</value>
+		</property>
+		<property name="url">
+			<value>${jdbc_url}</value>
+		</property>
+		<property name="username">
+			<value>${jdbc_userName}</value>
+		</property>
+		<property name="password">
+			<value>${jdbc_userPassword}</value>
+		</property>
+		<!-- 连接池中的最大连接数 -->
+		<property name="maxActive">
+			<value>5</value>
+		</property>
+		<!-- 初始化的连接数 -->
+		<property name="initialSize">
+			<value>2</value>
+		</property>
+		<!-- 获取连接的最大等待时间 -->
+		<property name="maxWait">
+			<value>6000</value>
+		</property>
+		<!-- 连接池的最大空闲 -->
+		<property name="maxIdle">
+			<value>2</value>
+		</property>
+		<!-- 连接池的最小空闲 -->
+		<property name="minIdle">
+			<value>2</value>
+		</property>
+		<!-- 自动清除无用的连接 -->
+		<property name="removeAbandoned">
+			<value>true</value>
+		</property>
+		<!-- 自动清除无用的连接的等待时间 -->
+		<property name="removeAbandonedTimeout">
+			<value>180</value>
+		</property>
+		<!-- 连接属性 -->
+		<property name="connectionProperties">
+			<value>clientEncoding=UTF-8</value>
+		</property>      
+	</bean>
+	<!-- 实例化MyBatis的SqlSessionFactoryBean对象-->
+	<!--mybatis配置,读取配置文件(扫描配置文件)-->
+    <bean id="sqlSessionFactory"
+        class="org.mybatis.spring.SqlSessionFactoryBean"
+		p:dataSource-ref="alibabaDataSource"
+		p:mapperLocations="classpath:mapper/*.xml">
+		<!-- mybatis-config.xml -->
+		<property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/>
+		<!-- 定义当前工程的别名包 -->
+		<property name="typeAliasesPackage" value="com.jt.easymall.pojo"/>
+    	
+    </bean>
+    <!-- 扫描所有XXXMapper的对象 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"
+        p:basePackage="com.jt.easymall.mapper"
+		p:sqlSessionFactoryBeanName="sqlSessionFactory">
+    </bean>
+</beans>
